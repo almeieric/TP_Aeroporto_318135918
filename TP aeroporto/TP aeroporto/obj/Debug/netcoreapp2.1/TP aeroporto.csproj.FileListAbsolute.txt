@@ -1,0 +1,11 @@
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\bin\Debug\netcoreapp2.1\TP aeroporto.deps.json
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\bin\Debug\netcoreapp2.1\TP aeroporto.runtimeconfig.json
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\bin\Debug\netcoreapp2.1\TP aeroporto.runtimeconfig.dev.json
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\bin\Debug\netcoreapp2.1\TP aeroporto.dll
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\bin\Debug\netcoreapp2.1\TP aeroporto.pdb
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.csprojAssemblyReference.cache
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.csproj.CoreCompileInputs.cache
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.AssemblyInfoInputs.cache
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.AssemblyInfo.cs
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.dll
+C:\Users\eric\Desktop\UNA\TP aeroporto\TP aeroporto\TP aeroporto\obj\Debug\netcoreapp2.1\TP aeroporto.pdb

@@ -4,114 +4,263 @@ using System.Collections.Generic;
 
 namespace TP_aeroporto
 {
-    public class Passageiro
+    /// <summary>
+    /// classe que refebe todos os voos
+    /// </summary>
+    public class Voo
     {
-        public string Nome { get; set; }
-        public int Nvoo { get; set; }
-        public int Npassagem { get; set; }
-        public int CPF { get; set; }
-        public int Telefone { get; set; }
-        public int Horario { get; set; }
+        
+        /// <summary>
+        /// recebe o ID(ou numero do VOO)
+        /// </summary>
+        public int Id { get;  set; }
+        /// <summary>
+        /// Recebe o destino do VOO
+        /// </summary>
+        public string Destino { get;  set; }
+        /// <summary>
+        /// Rebeve o horario do VOO
+        /// </summary>
+        public DateTime DataHora { get; set; }
 
         
-    }
 
+    }
+    /// <summary>
+    /// Rebe os dados do Passageiro
+    /// </summary>
+    public class Passageiro 
+    {
+        /// <summary>
+        /// Nome do Passageiro
+        /// </summary>
+        public string Nome { get; set; }
+        /// <summary>
+        /// CPF do passageiro
+        /// </summary>
+        public long CPF { get; set; }
+        /// <summary>
+        /// Telefone do Passageiro
+        /// </summary>
+        public long Telefone { get; set; }
+        /// <summary>
+        /// Dados do voo do passageiro
+        /// </summary>
+        public Voo Nvoo { get; set; }
+        
+
+    }
     
     class Program
     {
-        //static List<Passageiro> lista = new List<Passageiro>();
+       
         
-        
-             
-        
-        
+
         static void Main(string[] args)
         {
-            //Queue fila = new Queue();
-            List<Passageiro> lista = new List<Passageiro>();
+
+            
+            Voo destino1 = new Voo()
+            {
+                Id = 001,
+                Destino = "São Paulo",
+                DataHora = Convert.ToDateTime("13:50")
+            };
+            Voo destino2 = new Voo()
+            {
+                Id = 002,
+                Destino = "Recife",
+                DataHora = Convert.ToDateTime("20:00")
+            };
+            Voo destino3 = new Voo()
+            {
+                Id = 003,
+                Destino = "Rio",
+                DataHora = Convert.ToDateTime("21:00")
+            };
+            List<Voo> voos = new List<Voo>();
+            voos.Add(destino1);
+            voos.Add(destino2);
+            voos.Add(destino3);
+
+           
+
+            int posição;
+            Queue fila = new Queue();
+            List<Passageiro> listaPassageiro = new List<Passageiro>();
+
             Passageiro passageiro = new Passageiro();
+
+            //Cria passageiros fake (para não ter que cadastras varios ao abrir o programa;
+            Passageiro fakepassa1 = new Passageiro()
+            {
+                Nome = "Josias",
+                CPF = 12122121,
+                Telefone = 9878987,
+                Nvoo = destino1
+
+            };
+            Passageiro fakepassa2 = new Passageiro()
+            {
+                Nome = "Bruna",
+                CPF = 120001,
+                Telefone = 777784849,
+                Nvoo = destino2
+
+            };
+            Passageiro fakepassa3 = new Passageiro()
+            {
+                Nome = "Kalera",
+                CPF = 000021,
+                Telefone = 51651987,
+                Nvoo = destino1
+
+            };
+            Passageiro fakepassa4 = new Passageiro()
+            {
+                Nome = "Hufas",
+                CPF = 1206501,
+                Telefone = 965487987,
+                Nvoo = destino3
+
+            };
+            //adciona os usuarios a lista e fila
+            listaPassageiro.Add(fakepassa1);
+            listaPassageiro.Add(fakepassa2);
+            listaPassageiro.Add(fakepassa3);
+            listaPassageiro.Add(fakepassa4);
+            fila.Enqueue(fakepassa1);
+            fila.Enqueue(fakepassa2);
+            fila.Enqueue(fakepassa3);
+            fila.Enqueue(fakepassa4);
+
+
             bool sair = false;
+            
             do
             {
-                Console.WriteLine("Bem vindo ao Aeroporto do Acre:\n" +
+
+                string pDestino = "";
+                DateTime aux;
+                for (int i = 0; i < voos.Count; i++)
+                {
+
+                    pDestino = destino1.Destino;
+                    aux = destino1.DataHora;
+                    if (aux > destino2.DataHora)
+                    {
+                        pDestino = destino2.Destino;
+                    }
+                    else if (aux > destino3.DataHora)
+                    {
+                        pDestino = destino3.Destino;
+                    }
+
+
+
+                }
+
+
+                Console.WriteLine();
+                Console.WriteLine();
+               
+                Console.WriteLine("Bem vindo ao Aeroporto de Belo Hozironte:\n\n" + "O proximo vou é para: BH/{0}" + "\n\n" +
                     "Menu de Opções\n" +
                     "[F1] Lista de Passageiros\n" +
                     "[F2] Pesquisar\n" +
                     "[F3] Cadastrar Novo Passageiro\n" +
                     "[F4] Excluir Passageiro da lista\n" +
                     "[F5] Mostra Fila de Espera\n" +
-                    "[ESC] SAIR");
+                    "[ESC] SAIR",pDestino);
 
                 ConsoleKeyInfo Menu = Console.ReadKey();
                 sair = Menu.Key == ConsoleKey.Escape;
-                if (Menu.Key == ConsoleKey.F1)
+                if (Menu.Key == ConsoleKey.F1)//verifica todos os passageiros na fila
+                    
                 {
-                    int posição = 1;
-                    for (int i = 0; i < lista.Count; i++)
+                    posição = 1;
+                    for (int i = 0; i < fila.Count; i++)
                     {
-                        Console.WriteLine(posição + "°: " + "Nome: {0} " +
+
+                        Console.WriteLine("\n" + posição + "°: " + "Nome: {0} " +
                             "CPF: {1} " +
                             "Numero do Voo: {2} " +
-                            "Numero da Passagem: {3} " +
-                            "Telefone: {3} " +
-                            "Horario: {4}",
-                            lista[i].Nome, lista[i].CPF, lista[i].Nvoo, lista[i].Npassagem, lista[i].Telefone, lista[i].Horario);
+                            "Destino: BH/{3} " +
+                            "Telefone: {4} " +
+                            "Horario: {5}",
+                            listaPassageiro[i].Nome, listaPassageiro[i].CPF, listaPassageiro[i].Nvoo.Id, listaPassageiro[i].Nvoo.Destino, listaPassageiro[i].Telefone, listaPassageiro[i].Nvoo.DataHora.TimeOfDay);
                         posição++;
                         Console.WriteLine();
                     }
+               
                 }
-                else if (Menu.Key == ConsoleKey.F2)
+                else if (Menu.Key == ConsoleKey.F2)//pesquisa passageiro expecifico
                 {
                     Console.WriteLine("Insira o CPF por favor");
                     int pCPF = Int32.Parse(Console.ReadLine());
-                    for (int i = 0; i < lista.Count; i++)
+                    for (int i = 0; i < listaPassageiro.Count && i < 5; i++)
                     {
 
-                        if (pCPF == passageiro.CPF)
+                        if (pCPF == listaPassageiro[i].CPF)
                         {
-                            Console.WriteLine("Nome: {0} " +
-                                "CPF: {1} " +
-                                "Numero do Voo: {2} " +
-                                "Numero da Passagem: {3} " +
-                                "Telefone: {3} " +
-                                "Horario: {4}",
-                                lista[i].Nome, lista[i].CPF, lista[i].Nvoo, lista[i].Npassagem, lista[i].Telefone, lista[i].Horario);
+                            Console.WriteLine("\n" + "Nome: {0} " +
+                            "CPF: {1} " +
+                            "Numero do Voo: {2} " +
+                            "Destino: BH/{3} " +
+                            "Telefone: {4} " +
+                            "Horario: {5}",
+                            listaPassageiro[i].Nome, listaPassageiro[i].CPF, listaPassageiro[i].Nvoo.Id, listaPassageiro[i].Nvoo.Destino, listaPassageiro[i].Telefone, listaPassageiro[i].Nvoo.DataHora.TimeOfDay);
 
                             Console.WriteLine();
                         }
 
                     }
+                
                 }
-                else if (Menu.Key == ConsoleKey.F3)
+                else if (Menu.Key == ConsoleKey.F3)//cadastra um passageiro
                 {
                     bool retornar = false;
                     do
                     {
+
+
+                       
+                        
+
                         Console.WriteLine("Insira seu nome");
                         passageiro.Nome = Console.ReadLine();
 
-                        Console.WriteLine("Insira seu CPF(não insira pontuação)");
-                        passageiro.CPF = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Insira seu CPF(APENAS NUMEROS)");
+                        passageiro.CPF = long.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Insira seu Numero do Voo(não insira pontuação)");
-                        passageiro.Nvoo = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Insira seu Destino\n(RJ para Rio, SP para São Paulo, RE para recife)");
+                        string Nvoo = Console.ReadLine();
 
-                        Console.WriteLine("Insira seu Numero de passagem(não insira pontuação)");
-                        passageiro.Npassagem = Int32.Parse(Console.ReadLine());
+                        if (Nvoo == "SP")
+                        {
+                            passageiro.Nvoo = destino1;
+                        }
+                        else if (Nvoo == "RE")
+                        {
+                            passageiro.Nvoo = destino2;
+                        }
+                        else if (Nvoo == "RJ")
+                        {
+                            passageiro.Nvoo = destino1;
+                        }
 
-                        Console.WriteLine("Insira seu Telefone(não insira pontuação)");
-                        passageiro.Telefone = Int32.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Insira seu Horario(não insira pontuação)");
-                        passageiro.Horario = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("Insira seu Telefone(APENAS NUMEROS)");
+                        passageiro.Telefone = long.Parse(Console.ReadLine());
 
                         
-                        lista.Add(passageiro);
-                        
 
-                        Console.WriteLine("deseja cadastrar mais um?(Caso deseje retornar aperte F6)");
+                        listaPassageiro.Add(passageiro);
+                        fila.Enqueue(passageiro);
+
+                        Console.WriteLine("deseja cadastrar mais um? Caso deseje retornar aperte ESC" );
                         var finalizar = Console.ReadKey();
-                        retornar = finalizar.Key == ConsoleKey.F6;
+                        retornar = finalizar.Key == ConsoleKey.Escape;
+                        Console.WriteLine();
 
                     } while (!retornar);
 
@@ -128,16 +277,43 @@ namespace TP_aeroporto
                 }
                 else if (Menu.Key == ConsoleKey.F4)
                 {
-                    Console.WriteLine("Aqui Mostra a fila de espera");
+                    fila.Dequeue();
+
+                    Console.WriteLine("\nUsuario removido da fila com sucesso\n");
+                    
+                }
+                else if (Menu.Key == ConsoleKey.F5)
+                {
+                    posição = 6;
+                    for (int i = 0; i > 5 && i < fila.Count; i++)
+                    {
+                        Console.WriteLine("\n" + posição + "°: " + "Nome: {0} " +
+                            "CPF: {1} " +
+                            "Numero do Voo: {2} " +
+                            "Destino: BH/{3} " +
+                            "Telefone: {4} " +
+                            "Horario: {5}",
+                            listaPassageiro[i].Nome, listaPassageiro[i].CPF, listaPassageiro[i].Nvoo.Id, listaPassageiro[i].Nvoo.Destino, listaPassageiro[i].Telefone, listaPassageiro[i].Nvoo.DataHora.TimeOfDay);
+                        posição++;
+                        Console.WriteLine();
+
+                    }
+                
                 }
 
 
-
             } while (!sair);
-
             
         }
 
-        
+
+
+
+
+
+
+
+
     }
+    
 }

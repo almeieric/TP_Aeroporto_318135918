@@ -223,31 +223,29 @@ namespace TP_aeroporto
                     bool retornar = false;
                     do
                     {
+                        Passageiro passageiroCadastro = new Passageiro();
 
-
-                       
-                        
 
                         Console.WriteLine("Insira seu nome");
-                        passageiro.Nome = Console.ReadLine();
+                        passageiroCadastro.Nome = Console.ReadLine();
 
                         Console.WriteLine("Insira seu CPF(APENAS NUMEROS)");
-                        passageiro.CPF = long.Parse(Console.ReadLine());
+                        passageiroCadastro.CPF = long.Parse(Console.ReadLine());
 
                         Console.WriteLine("Insira seu Destino\n(RJ para Rio, SP para São Paulo, RE para recife)");
                         string Nvoo = Console.ReadLine();
 
                         if (Nvoo == "SP")
                         {
-                            passageiro.Nvoo = destino1;
+                            passageiroCadastro.Nvoo = destino1;
                         }
                         else if (Nvoo == "RE")
                         {
-                            passageiro.Nvoo = destino2;
+                            passageiroCadastro.Nvoo = destino2;
                         }
                         else if (Nvoo == "RJ")
                         {
-                            passageiro.Nvoo = destino1;
+                            passageiroCadastro.Nvoo = destino1;
                         }
 
                         Console.WriteLine("Insira seu Telefone(APENAS NUMEROS)");
@@ -255,8 +253,8 @@ namespace TP_aeroporto
 
                         
 
-                        listaPassageiro.Add(passageiro);
-                        fila.Enqueue(passageiro);
+                        listaPassageiro.Add(passageiroCadastro);
+                        fila.Enqueue(passageiroCadastro);
 
                         Console.WriteLine("deseja cadastrar mais um? Caso deseje retornar aperte ESC" );
                         var finalizar = Console.ReadKey();

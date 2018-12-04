@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace TP_aeroporto
 {
     /// <summary>
-    /// classe que refebe todos os voos
+    /// classe que recebe todos os voos
     /// </summary>
     public class Voo
     {
@@ -27,7 +27,7 @@ namespace TP_aeroporto
 
     }
     /// <summary>
-    /// Rebe os dados do Passageiro
+    /// Recebe os dados do Passageiro
     /// </summary>
     public class Passageiro 
     {
@@ -59,7 +59,7 @@ namespace TP_aeroporto
         static void Main(string[] args)
         {
 
-            
+            //Insere cada destino
             Voo destino1 = new Voo()
             {
                 Id = 001,
@@ -78,6 +78,7 @@ namespace TP_aeroporto
                 Destino = "Rio",
                 DataHora = Convert.ToDateTime("21:00")
             };
+            //Cria uma lista com os voos
             List<Voo> voos = new List<Voo>();
             voos.Add(destino1);
             voos.Add(destino2);
@@ -91,10 +92,10 @@ namespace TP_aeroporto
 
             Passageiro passageiro = new Passageiro();
 
-            //Cria passageiros fake (para não ter que cadastras varios ao abrir o programa;
+            //Cria passageiros fake (para não ter que cadastras varios ao abrir o programa)
             Passageiro fakepassa1 = new Passageiro()
             {
-                Nome = "Josias",
+                Nome = "Eric",
                 CPF = 12122121,
                 Telefone = 9878987,
                 Nvoo = destino1
@@ -102,7 +103,7 @@ namespace TP_aeroporto
             };
             Passageiro fakepassa2 = new Passageiro()
             {
-                Nome = "Bruna",
+                Nome = "Almeida",
                 CPF = 120001,
                 Telefone = 777784849,
                 Nvoo = destino2
@@ -110,7 +111,7 @@ namespace TP_aeroporto
             };
             Passageiro fakepassa3 = new Passageiro()
             {
-                Nome = "Kalera",
+                Nome = "Espirito",
                 CPF = 000021,
                 Telefone = 51651987,
                 Nvoo = destino1
@@ -118,7 +119,7 @@ namespace TP_aeroporto
             };
             Passageiro fakepassa4 = new Passageiro()
             {
-                Nome = "Hufas",
+                Nome = "Santo",
                 CPF = 1206501,
                 Telefone = 965487987,
                 Nvoo = destino3
@@ -142,7 +143,7 @@ namespace TP_aeroporto
 
                 string pDestino = "";
                 DateTime aux;
-                for (int i = 0; i < voos.Count; i++)
+                for (int i = 0; i < voos.Count; i++)//define qual é o proximo voo
                 {
 
                     pDestino = destino1.Destino;
@@ -275,7 +276,7 @@ namespace TP_aeroporto
 
 
                 }
-                else if (Menu.Key == ConsoleKey.F4)
+                else if (Menu.Key == ConsoleKey.F4)//remove passageiro da fila
                 {
                     fila.Dequeue();
 
@@ -285,7 +286,7 @@ namespace TP_aeroporto
                 else if (Menu.Key == ConsoleKey.F5)
                 {
                     posição = 6;
-                    for (int i = 0; i > 5 && i < fila.Count; i++)
+                    for (int i = 0; i > 5 && i < fila.Count; i++)//mostra lista de espera
                     {
                         Console.WriteLine("\n" + posição + "°: " + "Nome: {0} " +
                             "CPF: {1} " +
